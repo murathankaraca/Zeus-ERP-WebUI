@@ -3,7 +3,7 @@
 Sadece Manufacturing ve Inventory modülleri tamamlanmıştır.
 
 # ZeusERP-BackEnd
-[Click here](https://github.com/murat-atalik/ZeusERP-Backend)
+[Click here](https://github.com/murathankaraca/Zeus-ERP-Backend/tree/main/ZeusERP-Backend-main)
 
 # Lisans Bilgileri
 
