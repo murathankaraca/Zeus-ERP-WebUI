@@ -1,0 +1,28 @@
+<div>
+    <item-card-details *ngIf="address">
+        <div body>
+            <detail-card-header
+                [title]="address.title"
+            >
+            </detail-card-header>
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="General Information">
+                <form-element-container>
+                    <p class="mat-body-strong column">Description</p>
+                    <mat-form-field class="column">
+                        <textarea matInput class="column" [value]="this.address.description" [disabled]="true"></textarea>
+                    </mat-form-field>
+                </form-element-container>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div actions *ngIf="showDetails === true">
+            <item-detail-action 
+                title="Archive Address"
+                iconName="delete"
+                (navigateTo)="this.deleteAddress()"
+            ></item-detail-action>
+        </div>
+    </item-card-details>
+</div>
+  

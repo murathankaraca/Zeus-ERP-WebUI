@@ -1,0 +1,19 @@
+.detail-action {
+  width: 100%;
+  height: 10%;
+  padding: 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none; /* For Chrome and Opera */
+  -ms-user-select: none; /* For Internet Edge and Explorer*/
+  -webkit-user-select: none; /* For Safari */
+  -moz-user-select: none; /* For Firefox */
+  -khtml-user-select: none; /* Konqueror HTML */
+}
+p {
+  margin: 0;
+  padding: 0;
+}

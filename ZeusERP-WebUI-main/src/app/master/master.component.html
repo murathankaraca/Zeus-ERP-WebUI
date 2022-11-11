@@ -1,0 +1,14 @@
+<div class="module-container" id="page">
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let module of modules">
+      <button 
+        mat-flat-button 
+        color="primary" 
+        [ngStyle]="tileStyle" 
+        (click)="module.navigation()">
+        <mat-icon>{{module["iconName"]}}</mat-icon>
+        <p [innerText]="module['name']"></p>
+      </button>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

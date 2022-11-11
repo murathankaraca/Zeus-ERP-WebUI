@@ -1,0 +1,18 @@
+<div class="page">
+    <form [formGroup]="this.ecoTagForm" (submit)="this.onSubmit()">
+        <mat-card>
+            <div class="form-body">
+                <h2 style="text-align: center;">Create New Tag</h2>
+                <mat-form-field>
+                    <input matInput placeholder="Name" [formControl]="this.ecoTagForm.get('name')"/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput [ngxMatColorPicker]="picker" [formControl]="this.ecoTagForm.get('colorCode')" [disabled]="disabled">
+                    <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+                    <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+                </mat-form-field>
+                <button #btnsubmit class="btn-submit" type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+        </mat-card>
+    </form>
+</div>

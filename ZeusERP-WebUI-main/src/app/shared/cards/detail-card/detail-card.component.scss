@@ -1,0 +1,65 @@
+.item-card {
+  border-bottom: 1px solid #444;
+  margin: 0;
+  height: 80%;
+  &__sidemenu {
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid #444;
+    border-top: 1px solid #444;
+  }
+}
+
+// /* Smartphones (portrait and landscape) ----------- */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+// }
+
+// /* Smartphones (landscape) ----------- */
+// @media only screen and (min-width: 321px) {
+//   /* STYLES GO HERE */
+// }
+
+// /* Smartphones (portrait) ----------- */
+// @media only screen and (max-width: 320px) {
+//   /* STYLES GO HERE */
+// }
+
+// /* iPads (portrait and landscape) ----------- */
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+//   /* STYLES GO HERE */
+// }
+
+// /* iPads (landscape) ----------- */
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
+//   /* STYLES GO HERE */
+// }
+
+// /* iPads (portrait) ----------- */
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+//   /* STYLES GO HERE */
+// }
+
+// /* Desktops and laptops ----------- */
+// @media only screen and (min-width: 1224px) {
+//   /* STYLES GO HERE */
+// }
+
+// /* Large screens ----------- */
+// @media only screen and (min-width: 1824px) {
+//   /* STYLES GO HERE */
+// }
+
+// /* iPhone 5 (portrait &amp; landscape)----------- */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+//   /* STYLES GO HERE */
+// }
+
+// /* iPhone 5 (landscape)----------- */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: landscape) {
+//   /* STYLES GO HERE */
+// }
+
+// /* iPhone 5 (portrait)----------- */
+// @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+//   /* STYLES GO HERE */
+// }

@@ -1,0 +1,52 @@
+<div>
+    <item-card-details>
+        <div body>
+            <detail-card-header 
+            [title]="locationDetails.locationName" 
+            >
+            </detail-card-header>
+            <div>
+                <form-element-container>
+                    <p class="mat-body-strong column">Location Address</p>
+                    <p class="mat-body column hyperlink" [textContent]="this.locationDetails.addressTitle" (click)="navigate(['/','inventory','addresses', this.locationDetails.addressId.toString()])"></p>
+                </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">Is Internal</p>
+                    <mat-checkbox class="column" [disabled]="true" [value]="this.locationDetails.isInternalLocation"></mat-checkbox>
+                </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">Is Scrap Location</p>
+                    <mat-checkbox class="column" [disabled]="true" [value]="this.locationDetails.isReturnLocation"></mat-checkbox>
+                </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">Is Return Location</p>
+                    <mat-checkbox class="column" [disabled]="true" [value]="this.locationDetails.isScrapLocation"></mat-checkbox>
+                </form-element-container>
+            </div>
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="General Information">
+                    <app-text-details label="Parent Location" [data]="this.locationDetails.parentLocationName"></app-text-details>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div actions *ngIf="showDetails === true">
+            <!-- <item-detail-action 
+                title="Bill Of Materials"
+                iconName="list"
+                quantity=1
+                (navigateTo)="navigate('/manufacturing/products/boms')"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Edit Product"
+                iconName="add"
+                (navigateTo)="navigate('/inventory/products/edit/1')"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Archive Product"
+                iconName="remove"
+                (navigateTo)="navigate('/inventory/products/edit/1')"
+            ></item-detail-action> -->
+        </div>
+    </item-card-details>
+</div>
+  

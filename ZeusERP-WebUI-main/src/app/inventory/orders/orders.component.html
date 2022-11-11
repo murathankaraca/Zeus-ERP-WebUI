@@ -1,0 +1,16 @@
+<div class="sub-page">
+  <div class="columns">
+    <app-process-card class="column">
+        <h3>Replenishments</h3>
+        <button mat-flat-button color="primary" [routerLink]="['/','inventory','orders','replenishments']">See Details</button>
+    </app-process-card>
+    <app-process-card class="column">
+        <h3>Delivery Orders</h3>
+        <button mat-flat-button color="primary" [routerLink]="['/','inventory','orders','deliveries']">See Details</button>
+    </app-process-card>
+    <app-process-card class="column">
+      <h3>Scrap Orders</h3>
+      <button mat-flat-button color="primary" [routerLink]="['/','inventory','orders','scraps', 1]">See Details</button>
+  </app-process-card>
+  </div>
+</div>

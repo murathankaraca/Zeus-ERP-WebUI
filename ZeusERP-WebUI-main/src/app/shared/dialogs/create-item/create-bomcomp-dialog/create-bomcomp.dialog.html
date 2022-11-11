@@ -1,0 +1,25 @@
+<form [formGroup]="this.bomCompForm">
+      <div>
+        <form-element-container>
+            <mat-form-field appearance="fill">
+                <mat-label>Product</mat-label>
+                <mat-select [formControl]="this.bomCompForm.get('productId')">
+                  <mat-option *ngFor="let product of products" [value]="product['id']">
+                    {{product['name']}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </form-element-container>
+        <form-element-container>
+            <p class="mat-body-strong column">Quantity</p>
+            <mat-form-field class="column">
+              <input matInput [formControl]="this.bomCompForm.get('quantity')"/>
+            </mat-form-field>
+        </form-element-container>
+      </div>
+    <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+        <button #btnSubmit [disabled]="!this.bomCompForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" [mat-dialog-close]="onSubmit()">Submit</button>
+        &nbsp;&nbsp;
+        <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+    </form-element-container>
+</form>

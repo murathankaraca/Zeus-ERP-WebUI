@@ -1,0 +1,39 @@
+<div *ngIf="contact">
+    <item-card-details>
+        <div body>
+            <detail-card-header
+                [title]="contact.name + ' ' + contact.surname" 
+            >
+            </detail-card-header>
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="General Information">
+                    <app-text-details label="Company Name" [data]="this.contact.companyName"></app-text-details>
+                    <app-text-details label="Job Position" [data]="this.contact.jobPosition"></app-text-details>
+                    <app-text-details label="Email Address" [data]="this.contact.emailAddress"></app-text-details>
+                    <app-text-details label="Phone Number" [data]="this.contact.phoneNumber"></app-text-details>
+                    <app-text-details label="Website Link" [data]="this.contact.websiteLink"></app-text-details>
+                </mat-tab>
+                <mat-tab label="Extra Notes">
+                    <form-element-container>
+                        <mat-form-field class="column">
+                            <textarea matInput class="column" [formControl]="this.contact.extraInfo"></textarea>
+                        </mat-form-field>
+                    </form-element-container>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div actions *ngIf="showDetails === true">
+            <item-detail-action 
+                title="Edit Contact"
+                iconName="add"
+                (navigateTo)="navigate('/inventory/contacts/edit/' + this.contact.id.toString())"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Archive Contact"
+                iconName="remove"
+                (navigateTo)="deleteContact()"
+            ></item-detail-action>
+        </div>
+    </item-card-details>
+</div>
+  

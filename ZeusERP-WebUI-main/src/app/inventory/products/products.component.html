@@ -1,0 +1,24 @@
+<div class="sub-page" style="padding: 0.75rem;">
+  <div class="columns">
+    <div class="column">
+      <button mat-raised-button style="width: 100%;" (click)="addProduct()">Add Product</button>
+    </div>
+  </div>
+  <div  class="columns is-multiline">
+    <!-- <ngx-skeleton-loader *ngIf="!finishedLoading" animation="pulse"></ngx-skeleton-loader> -->
+    <list-card *ngFor="let product of productListDtos"
+      [title]="product.productName"
+      class="column is-4-desktop is-12-mobile is-6-tablet"
+      [imgPath]="'https://eastburncountryfurniture.co.uk/wp-content/uploads/2018/03/Rustic_Wooden_Table_TB008a.jpg'">
+        <app-text-details label="Unit Price" [data]="product.productPrice"></app-text-details>
+        <app-text-details label="Unit Cost" [data]="product.productCost"></app-text-details>
+        <app-text-details label="Available" [data]="product.productQuantity"></app-text-details>
+        <!--Context Menu-->
+        <div style="padding: 1rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-evenly;">
+          <button mat-flat-button color="primary"  (click)="editProduct(product.productId)"><mat-icon>edit</mat-icon>Edit</button>
+          <br/>
+          <button mat-flat-button color="primary"  (click)="showProductDetails(product.productId)"><mat-icon>edit</mat-icon>Details</button>
+        </div>
+      </list-card>
+  </div>
+</div>

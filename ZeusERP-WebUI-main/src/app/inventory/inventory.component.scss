@@ -1,0 +1,27 @@
+#page {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.dropdown {
+    height: 100%; padding: 1rem;
+}
+
+.widen {
+    width: 100%;
+}
+
+.user-section {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+
+}

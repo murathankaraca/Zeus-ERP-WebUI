@@ -1,0 +1,75 @@
+<div style="width: 100%;">
+    <add-card>
+        <div body>
+          <form [formGroup]="this.ecoForm">
+              <form-element-container>
+                  <mat-form-field>
+                      <input matInput placeholder="Title" [formControl]="this.ecoForm.get('summary')"/>
+                      <mat-hint *ngIf="(this.ecoForm.get('summary').invalid && this.ecoForm.get('summary').dirty)">This field is required.</mat-hint>
+                  </mat-form-field>
+              </form-element-container>
+                <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Responsible</mat-label>
+                        <mat-select [formControl]="this.ecoForm.get('responsibleId')">
+                        <mat-option *ngFor="let user of users" [value]="user['UserName']">
+                            {{user['UserName']}}
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Product</mat-label>
+                        <mat-select [formControl]="this.ecoForm.get('productId')">
+                          <mat-option *ngFor="let product of products" [value]="product['id']">
+                            {{product['name']}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Apply On</mat-label>
+                        <mat-select [formControl]="this.ecoForm.get('applyOn')">
+                            <mat-option [value]="0" >Product Only</mat-option>
+                            <mat-option [value]="1" >Bom</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Effectivity</mat-label>
+                        <mat-select [formControl]="this.ecoForm.get('effectivity')">
+                            <mat-option [value]="0" >As soon as possible</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Approver</mat-label>
+                        <mat-select [formControl]="this.ecoForm.get('approverId')">
+                            <mat-option *ngFor="let user of users" [value]="user['UserName']">
+                            {{user['UserName']}}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                </form-element-container>
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="Notes">
+                        <form-element-container>
+                            <mat-form-field style="width: 100%;">
+                                <textarea matInput [formControl]="this.ecoForm.get('note')" placeholder="Text"></textarea>
+                            </mat-form-field>
+                        </form-element-container>
+                    </mat-tab>
+                </mat-tab-group>
+              <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                  <button #btnSubmit [disabled]="!this.ecoForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+                  &nbsp;&nbsp;
+                  <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+              </form-element-container>
+          </form>
+      </div>
+    </add-card>
+</div>

@@ -1,0 +1,17 @@
+<div id="loginForm">
+    <mat-card>
+        <form [formGroup]="this.loginForm" (submit)="checkCredentials($event)">
+            <mat-icon style="font-size: 24pt;">person_search</mat-icon>
+            <h2>Enter Credentials</h2>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Username" [formControl]="this.loginForm.get('username')" type="text" name="edtTxtUsername" />
+            </mat-form-field>
+            <mat-form-field>
+                <input type="password" matInput placeholder="Password" [formControl]="this.loginForm.get('password')" type="password" name="edtTxtPassword" />
+            </mat-form-field>
+            <p class="hyperlink mat-strong-body" (click)="this.navigateToForgotPassword()">Forgot your password?</p>
+            <p class="hyperlink mat-strong-body" (click)="this.navigateToRegister()">Don't have an account? Click here to create one!</p>
+            <button color="primary" mat-raised-button type="submit" name="btnSubmit">Login</button>
+        </form>
+    </mat-card>
+</div>

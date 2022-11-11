@@ -1,0 +1,11 @@
+<div class="page">
+    <h3 style="text-align: center; margin-top: 1rem;">Engineering Change Order Tags</h3>
+    <div class="columns is-variable is-1-mobile is-0-tablet is-3-desktop is-8-widescreen is-2-fullhd" style="margin: 2rem;">
+        <div class="column" *ngFor="let tag of ecoTags" style="margin-bottom: 0.5rem;">
+            <mat-card matRipple (click)="this.navigateToEdit(tag.id)" style="min-height: 4rem; display: flex; justify-content: center; align-items: center;" [style.backgroundColor]="tag.colorCode">
+                <p [innerText]="tag.name"></p>
+            </mat-card>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<mat-form-field>
+    <mat-select [(value)]="item">
+        <mat-option>
+            <ng-content select="[createnew]"></ng-content>
+        </mat-option>
+        <ng-content select="[options]"></ng-content>
+    </mat-select>
+  </mat-form-field>

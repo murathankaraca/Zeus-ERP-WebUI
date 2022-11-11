@@ -1,0 +1,67 @@
+<div style="width: 100%;">
+    <add-card>
+        <div body>
+          <form [formGroup]="this.contactForm">
+              <form-element-container>
+                  <mat-form-field>
+                      <input matInput placeholder="Name" [formControl]="this.contactForm.get('name')"/>
+                      <mat-hint *ngIf="(this.contactForm.get('name').invalid && this.contactForm.get('name').dirty)">This field is required.</mat-hint>
+                  </mat-form-field>
+              </form-element-container>
+              <form-element-container>
+                    <mat-form-field>
+                        <input matInput placeholder="Surname" [formControl]="this.contactForm.get('surname')"/>
+                        <mat-hint *ngIf="(this.contactForm.get('surname').invalid && this.contactForm.get('surname').dirty)">This field is required.</mat-hint>
+                    </mat-form-field>
+                </form-element-container>
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="General Information">
+                      <form-element-container>
+                          <p class="mat-body-strong column">Company Name</p>
+                          <mat-form-field class="column">
+                              <textarea matInput class="column" [formControl]="this.contactForm.get('companyName')"></textarea>
+                          </mat-form-field>
+                      </form-element-container>
+                      <form-element-container>
+                          <p class="mat-body-strong column">Job Position</p>
+                          <mat-form-field class="column">
+                              <input matInput class="column" [formControl]="this.contactForm.get('jobPosition')"/>
+                          </mat-form-field>
+                      </form-element-container>
+                      <form-element-container>
+                          <p class="mat-body-strong column">Email Address</p>
+                          <mat-form-field class="column">
+                              <input matInput class="column" placeholder="Ex. john.doe@dmail.com" [formControl]="this.contactForm.get('emailAddress')"/>
+                          </mat-form-field>
+                      </form-element-container>
+                      <form-element-container>
+                          <p class="mat-body-strong column">Phone Number</p>
+                          <mat-form-field class="column">
+                              <input matInput class="column" placeholder="Ex. +90*" [formControl]="this.contactForm.get('phoneNumber')"/>
+                          </mat-form-field>
+                      </form-element-container>
+                      <form-element-container>
+                        <p class="mat-body-strong column">Website Link</p>
+                        <mat-form-field class="column">
+                            <input matInput class="column" placeholder="Ex. www.*.org" [formControl]="this.contactForm.get('websiteLink')"/>
+                        </mat-form-field>
+                    </form-element-container>
+                    </mat-tab>
+                    <mat-tab label="Extra Notes">
+                        <!-- TODO: Add textarea. -->
+                        <form-element-container>
+                            <mat-form-field class="column">
+                                <textarea matInput class="column" [formControl]="this.contactForm.get('extraInfo')"></textarea>
+                            </mat-form-field>
+                        </form-element-container>
+                    </mat-tab>
+                </mat-tab-group>
+              <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                  <button #btnSubmit [disabled]="!this.contactForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+                  &nbsp;&nbsp;
+                  <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+              </form-element-container>
+          </form>
+      </div>
+    </add-card>
+  </div>

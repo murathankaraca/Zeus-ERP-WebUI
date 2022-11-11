@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/bulma.css";
+button {
+  text-align: center;
+}
+html,
+body {
+  height: 100%;
+}
+table {
+  width: 100%;
+}
+app-root {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+body {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.page {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.sub-page {
+  height: 90%;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+}
+
+.columns,
+.column {
+  margin: 0;
+  padding: 0;
+}
+
+.hyperlink {
+  color: #5DADE2;
+  cursor: pointer;
+
+  &-active {
+    color: #A569BD;
+  }
+  &:hover {
+    color: darkorange;
+  }
+}
+
+@import "./../node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css";

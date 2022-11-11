@@ -1,0 +1,95 @@
+<div style="width: 100%;">
+  <add-card>
+      <div body>
+        <form [formGroup]="this.productForm">
+            <form-element-container>
+                <mat-form-field>
+                    <input matInput placeholder="Title" [formControl]="this.productForm.get('name')"/>
+                    <mat-hint *ngIf="(this.productForm.get('name').invalid && this.productForm.get('name').dirty)">This field is required.</mat-hint>
+                </mat-form-field>
+            </form-element-container>
+              <div>
+                <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Category</mat-label>
+                        <mat-select [formControl]="this.productForm.get('categoryId')">
+                            <mat-option>
+                                <p style="width: 100%; height: 100%;" (click)="this.navigateToCreateCategories()">Create New Category...</p>
+                            </mat-option>
+                          <mat-option *ngFor="let category of categories" [value]="category['id']">
+                            {{category['name']}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">Can Be Purchased</p>
+                    <mat-checkbox class="column" [formControl]="this.productForm.get('canBePurchased')"></mat-checkbox>
+                </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">Can Be Sold</p>
+                    <mat-checkbox class="column" [formControl]="this.productForm.get('canBeSold')"></mat-checkbox>
+                </form-element-container>
+              </div>
+              <mat-tab-group dynamicHeight>
+                  <mat-tab label="General Information">
+                    <form-element-container>
+                        <p class="mat-body-strong column">Description</p>
+                        <mat-form-field class="column">
+                            <textarea matInput class="column" placeholder="Description..." [formControl]="this.productForm.get('description')"></textarea>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Product Type</p>
+                        <mat-form-field class="column">
+                            <mat-select [formControl]="this.productForm.get('productType')">
+                                <mat-option *ngFor="let type of productTypes" [value]="type['id']">
+                                  {{ type["value"] }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Unit Price</p>
+                        <mat-form-field class="column">
+                            <input matInput class="column" placeholder="Ex. 5,000.000 $" [formControl]="this.productForm.get('unitPrice')"/>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Unit Cost</p>
+                        <mat-form-field class="column">
+                            <input matInput class="column" placeholder="Ex. 1,000.000 $" [formControl]="this.productForm.get('unitCost')"/>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Available Quantity</p>
+                        <mat-form-field class="column">
+                            <input matInput class="column" placeholder="Ex. 5.000 Units" [formControl]="this.productForm.get('unitCount')"/>
+                        </mat-form-field>
+                    </form-element-container>
+                  </mat-tab>
+                  <mat-tab label="Inventory">
+                      <app-detail-secondary-header title='Logistics' padding="0.75rem"></app-detail-secondary-header>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Volume</p>
+                        <mat-form-field class="column">
+                            <input matInput class="column" placeholder="5.000 m^3" [formControl]="this.productForm.get('volume')"/>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Weight</p>
+                        <mat-form-field class="column">
+                            <input matInput class="column" placeholder="5.000 kg" [formControl]="this.productForm.get('weight')"/>
+                        </mat-form-field>
+                    </form-element-container>
+                  </mat-tab>
+              </mat-tab-group>
+            <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                <button #btnSubmit [disabled]="!this.productForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+                &nbsp;&nbsp;
+                <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+            </form-element-container>
+        </form>
+    </div>
+  </add-card>
+</div>

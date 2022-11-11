@@ -1,0 +1,80 @@
+<div class="sub-page">
+      
+    <form [formGroup]="warehouseForm">
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+    
+              <!-- Warehouse Code Column -->
+              <ng-container matColumnDef="warehouseCode">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Warehouse Code</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-form-field>
+                        <input matInput [formControl]="this.warehouseForm.get('warehouseCode')"/>
+                    </mat-form-field>
+                </td>
+              </ng-container>
+    
+            <!-- Warehouse Name Column -->
+            <ng-container matColumnDef="warehouseName">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                <td mat-cell *matCellDef="let row">
+                <mat-form-field>
+                    <input matInput [formControl]="this.warehouseForm.get('warehouseName')"/>
+                </mat-form-field>
+                </td>
+            </ng-container>
+    
+            <!-- Location Name Column -->
+            <ng-container matColumnDef="locationName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Location Reference</th>
+            <td mat-cell *matCellDef="let row">
+                <mat-form-field class="column">
+                    <mat-select [formControl]="this.warehouseForm.get('locationId')">
+                        <mat-option *ngFor="let loc of locations" [value]="loc['id']">
+                            {{ loc["name"] }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </td>
+            </ng-container>
+
+            <!-- Has Limited Stock Count Column -->
+            <ng-container matColumnDef="hasLimitedStockCount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Has Limited Stock Count</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox matInput [formControl]="this.warehouseForm.get('hasLimitedStockCount')"></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Stock Limit Column -->
+            <ng-container matColumnDef="stockLimit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Stock Limit</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-form-field>
+                        <input matInput [formControl]="this.warehouseForm.get('stockLimit')"/>
+                    </mat-form-field>
+                </td>
+            </ng-container>
+
+            <!-- Used For Manufacture Column -->
+            <ng-container matColumnDef="usedForManufacture">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Used For Manufacture</th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-checkbox matInput [formControl]="this.warehouseForm.get('usedForManufacture')"></mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Details Column -->
+            <ng-container matColumnDef="details">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+                <td mat-cell *matCellDef="let row">
+                <button mat-flat-button color="primary" (click)="onSubmitForm()"><mat-icon>info</mat-icon></button>
+                </td>
+            </ng-container>
+    
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+    </form>
+</div>

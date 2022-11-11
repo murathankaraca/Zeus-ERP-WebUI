@@ -1,0 +1,67 @@
+<div style="width: 100%;">
+    <add-card>
+        <div body>
+          <form [formGroup]="this.scrapForm">
+              <form-element-container>
+                  <mat-form-field>
+                      <input matInput placeholder="Title" [formControl]="this.scrapForm.get('reference')"/>
+                      <mat-hint *ngIf="(this.scrapForm.get('reference').invalid && this.scrapForm.get('reference').dirty)">This field is required.</mat-hint>
+                  </mat-form-field>
+              </form-element-container>
+                <div>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Description</p>
+                        <mat-checkbox class="column" [formControl]="this.scrapForm.get('description')"></mat-checkbox>
+                    </form-element-container>
+                    <form-element-container>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Product</mat-label>
+                            <mat-select [formControl]="this.scrapForm.get('productId')">
+                                <mat-option *ngFor="let product of products" [value]="product['id']">
+                                {{product['name']}}
+                                </mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Quantity</p>
+                        <mat-checkbox class="column" [formControl]="this.scrapForm.get('quantity')"></mat-checkbox>
+                    </form-element-container>
+                    <form-element-container>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Scheduled Date</mat-label>
+                            <input matInput [matDatepicker]="dp" [formControl]="this.scrapForm.get('scheduledDate')">
+                            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                            <mat-datepicker #dp></mat-datepicker>
+                          </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Source Location</mat-label>
+                            <mat-select [formControl]="this.scrapForm.get('sourceLocationId')">
+                            <mat-option *ngFor="let location of locations" [value]="location['id']">
+                                {{location['name']}}
+                            </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Scrap Location</mat-label>
+                            <mat-select [formControl]="this.scrapForm.get('scrapLocationId')">
+                            <mat-option *ngFor="let location of locations" [value]="location['id']">
+                                {{location['name']}}
+                            </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </form-element-container>
+                </div>
+            <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                <button #btnSubmit [disabled]="!this.scrapForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+                &nbsp;&nbsp;
+                <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+            </form-element-container>
+          </form>
+      </div>
+    </add-card>
+  </div>

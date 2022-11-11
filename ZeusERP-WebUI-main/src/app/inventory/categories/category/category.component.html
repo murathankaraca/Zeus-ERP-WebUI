@@ -1,0 +1,34 @@
+<div>
+    <item-card-details *ngIf="categoryDetailsDto">
+        <div body>
+            <detail-card-header
+                [title]="categoryDetailsDto.categoryName"
+            >
+            </detail-card-header>
+            <div>
+                <form-element-container>
+                    <p class="mat-body-strong column">Parent Category</p>
+                    <p class="mat-body column hyperlink" (click)="this.navigate('/inventory/categories/' + categoryDetailsDto.parentCategoryId)">{{categoryDetailsDto.parentCategoryName}}</p>
+                </form-element-container>
+              </div>
+              <mat-tab-group dynamicHeight>
+                  <mat-tab label="General Information">
+                    <form-element-container>
+                        <p class="mat-body-strong column">Description</p>
+                        <mat-form-field class="column">
+                            <textarea matInput class="column" [value]="this.categoryDetailsDto.categoryDescription" [disabled]="true"></textarea>
+                        </mat-form-field>
+                    </form-element-container>
+                  </mat-tab>
+              </mat-tab-group>
+        </div>
+        <div actions *ngIf="showDetails === true">
+            <item-detail-action 
+                title="Archive Category"
+                iconName="list"
+                (navigateTo)="this.deleteCategory()"
+            ></item-detail-action>
+        </div>
+    </item-card-details>
+</div>
+  

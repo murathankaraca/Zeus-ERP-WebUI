@@ -1,0 +1,65 @@
+<div style="width: 100%;">
+    <add-card>
+        <div body>
+          <form [formGroup]="this.bomForm">
+              <form-element-container>
+                  <mat-form-field>
+                      <input matInput placeholder="Title" [formControl]="this.bomForm.get('reference')"/>
+                      <mat-hint *ngIf="(this.bomForm.get('reference').invalid && this.bomForm.get('reference').dirty)">This field is required.</mat-hint>
+                  </mat-form-field>
+              </form-element-container>
+                <div>
+                  <form-element-container>
+                      <mat-form-field appearance="fill">
+                          <mat-label>Product</mat-label>
+                          <mat-select [formControl]="this.bomForm.get('productId')">
+                            <mat-option *ngFor="let product of products" [value]="product['id']">
+                              {{product['name']}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                  </form-element-container>
+                  <form-element-container>
+                      <p class="mat-body-strong column">Manufacture This Component</p>
+                      <mat-checkbox parse-int class="column" [formControl]="this.bomForm.get('bomType')"></mat-checkbox>
+                  </form-element-container>
+                  <form-element-container>
+                    <p class="mat-body-strong column">Quantity</p>
+                    <mat-form-field class="column">
+                        <textarea matInput class="column" placeholder="Description..." [formControl]="this.bomForm.get('quantity')"></textarea>
+                    </mat-form-field>
+                </form-element-container>
+                </div>
+                <mat-tab-group *ngIf="this.bomId" dynamicHeight>
+                    <mat-tab label="Components">
+                      <div style="margin: 1rem;">
+                        <button mat-flat-button color="primary" style="width: 100%" (click)="openCreateComponentDialog()">Create New Component</button>
+                      </div>
+                      
+                        <table mat-table [dataSource]="this.compDataSource" matSort>
+                        <ng-container matColumnDef="productName">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+                          <td mat-cell *matCellDef="let row">
+                             <p class="hyperlink" (click)="navigateToProduct(row.productId)">{{row.productName}}</p>
+                          </td>
+                        </ng-container>
+
+                          <ng-container matColumnDef="quantity">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+                            <td mat-cell *matCellDef="let row">{{row.quantity}} </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedComponentColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedComponentColumns;"></tr>
+                      </table>
+                    
+                    </mat-tab>
+                </mat-tab-group>
+              <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                  <button #btnSubmit [disabled]="!this.bomForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+                  &nbsp;&nbsp;
+                  <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+              </form-element-container>
+          </form>
+      </div>
+    </add-card>
+  </div>

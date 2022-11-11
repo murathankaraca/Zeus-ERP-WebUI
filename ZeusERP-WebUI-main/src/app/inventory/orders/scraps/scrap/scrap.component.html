@@ -1,0 +1,47 @@
+<div>
+    <item-card-details>
+        <div body>
+            <detail-card-header 
+            [title]="scrapDetails.orderReference" 
+            >
+            </detail-card-header>
+            <form-element-container>
+                <p class="mat-body-strong column">Description</p>
+                <p class="column" [innerText]="this.scrapDetails.orderDescription"></p>
+            </form-element-container>
+            <form-element-container>
+                <p class="mat-body-strong column">Product Name</p>
+                <p class="column" [innerText]="this.scrapDetails.productName"></p>
+            </form-element-container>
+            <form-element-container>
+                <p class="mat-body-strong column">Quantity</p>
+                <p class="column" >{{this.scrapDetails.quantity}}</p>
+            </form-element-container>
+            <form-element-container>
+                <p class="mat-body-strong column">Source Location</p>
+                <p class="column" >{{this.scrapDetails.sourceLocationName}}</p>
+            </form-element-container>
+            <form-element-container>
+                <p class="mat-body-strong column">Scrap Location</p>
+                <p class="column" >{{this.scrapDetails.scrapLocationName}}</p>
+            </form-element-container>
+            <form-element-container>
+                <p class="mat-body-strong column">Scheduled Date</p>
+                <p class="column" >{{this.scrapDetails.scheduledDate}}</p>
+            </form-element-container>
+            <form-element-container>
+                <p class="mat-body-strong column">Completed Date</p>
+                <p class="column" >{{this.scrapDetails.completedDate}}</p>
+            </form-element-container>
+        </div>
+        <div actions>
+            <item-detail-action 
+                title="Product Moves"
+                iconName="list"
+                quantity=1
+                (navigateTo)="navigate('/manufacturing/products/boms')"
+            ></item-detail-action>
+        </div>
+    </item-card-details>
+</div>
+  

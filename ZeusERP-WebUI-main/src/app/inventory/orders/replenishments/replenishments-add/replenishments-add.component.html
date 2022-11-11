@@ -1,0 +1,61 @@
+<div style="width: 100%;">
+  <add-card>
+      <div body>
+        <form [formGroup]="this.replenishmentForm">
+            <form-element-container>
+                <mat-form-field>
+                    <input matInput placeholder="Title" [formControl]="this.replenishmentForm.get('reference')"/>
+                    <mat-hint *ngIf="(this.replenishmentForm.get('reference').invalid && this.replenishmentForm.get('reference').dirty)">This field is required.</mat-hint>
+                </mat-form-field>
+            </form-element-container>
+              <div>
+                  <form-element-container>
+                      <mat-form-field appearance="fill">
+                          <mat-label>Product</mat-label>
+                          <mat-select [formControl]="this.replenishmentForm.get('productToReplenishId')">
+                              <mat-option *ngFor="let product of products" [value]="product['id']">
+                              {{product['name']}}
+                              </mat-option>
+                          </mat-select>
+                          </mat-form-field>
+                  </form-element-container>
+                  <form-element-container>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Location</mat-label>
+                        <mat-select [formControl]="this.replenishmentForm.get('locationId')">
+                            <mat-option *ngFor="let location of locations" [value]="location['id']">
+                            {{location['name']}}
+                            </mat-option>
+                        </mat-select>
+                        </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                  <mat-form-field appearance="fill">
+                      <mat-label>Scheduled Date</mat-label>
+                      <input matInput [matDatepicker]="dp">
+                      <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                      <mat-datepicker #dp></mat-datepicker>
+                    </mat-form-field>
+              </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">On Hand Quantity</p>
+                    <mat-form-field>
+                      <input matInput class="column" [formControl]="this.replenishmentForm.get('onHandQuantity')">
+                    </mat-form-field>
+                </form-element-container>
+                <form-element-container>
+                  <p class="mat-body-strong column">Ordered Quantity</p>
+                  <mat-form-field>
+                    <input matInput class="column" [formControl]="this.replenishmentForm.get('orderQuantity')">
+                  </mat-form-field>
+              </form-element-container>
+              </div>
+          <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+              <button #btnSubmit [disabled]="!this.replenishmentForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+              &nbsp;&nbsp;
+              <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+          </form-element-container>
+        </form>
+    </div>
+  </add-card>
+</div>

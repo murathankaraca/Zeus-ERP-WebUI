@@ -1,0 +1,60 @@
+<div class="sub-page" style="padding: 1rem;">
+      
+    <div class="mat-elevation-z8">
+      <form>
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- Product Selection Column -->
+          <ng-container matColumnDef="productName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-form-field>
+                <mat-select (valueChange)="changeOnHandQuantity($event)">
+                  <mat-option>
+                    <div createnew (click)="openProductDialog()">Create New Product...</div>
+                  </mat-option>
+                  <mat-option options *ngFor="let product of products" [value]="product">{{product.name}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+          </ng-container>
+
+          <!-- Location Selection Column -->
+          <ng-container matColumnDef="locationName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Location</th>
+              <td mat-cell *matCellDef="let row">
+                <mat-form-field>
+                  <mat-select>
+                    <mat-option>
+                      <div createnew (click)="openLocationDialog()">Create New Location...</div>
+                    </mat-option>
+                    <mat-option options *ngFor="let location of locations" [value]="location">{{location.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+          </ng-container>
+        
+        <!-- On Hand Quantity Column -->
+        <ng-container matColumnDef="onHandQuantity">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>On Hand Quantity</th>
+            <td mat-cell *matCellDef="let row">{{productOnHand.toFixed(3)}}</td>
+        </ng-container>
+
+        <!-- Ordered Quantity Column -->
+        <ng-container matColumnDef="orderedQuantity">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Ordered Quantity</th>
+          <td mat-cell *matCellDef="let row">{{row.orderedQuantity.toFixed(3)}}</td>
+        </ng-container>
+
+        <!-- Ordered Quantity Column -->
+        <ng-container matColumnDef="x">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-flat-button color="primary">Create</button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </form>
+  </div>
+</div>

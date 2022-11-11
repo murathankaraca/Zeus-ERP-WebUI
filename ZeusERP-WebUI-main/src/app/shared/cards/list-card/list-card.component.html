@@ -1,0 +1,10 @@
+<mat-card style="margin: 0.5rem; padding: 0.5rem; box-sizing: border-box;">
+    <mat-card-content class="columns is-mobile">
+      <div *ngIf="this.imgPath" class="column is-one-third" [ngStyle]="getImgStyle()">
+      </div>
+      <div class="column" style="margin: 0.25rem">
+        <h3>{{title}}</h3>
+        <ng-content></ng-content>
+      </div>
+    </mat-card-content>
+</mat-card>

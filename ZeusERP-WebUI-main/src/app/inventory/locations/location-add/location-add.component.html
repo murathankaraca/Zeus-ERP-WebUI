@@ -1,0 +1,76 @@
+<div>
+    <item-card-details>
+        <div body>
+            <form [formGroup]="this.locationForm">
+                <detail-card-header 
+                    [title]="'Add a Location'" 
+                >
+                </detail-card-header>
+                <div>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Location Name</p>
+                        <mat-form-field class="column">
+                            <input matInput placeholder="Location Name" [formControl]="this.locationForm.get('name')" required>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Location Code</p>
+                        <mat-form-field class="column">
+                            <input matInput placeholder="Location Code" [formControl]="this.locationForm.get('code')" required>
+                        </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <mat-form-field appearance="fill">
+                            <mat-label>Location Address</mat-label>
+                            <mat-select [formControl]="this.locationForm.get('addressId')">
+                              <mat-option *ngFor="let address of addresses" [value]="address['id']">
+                                {{address['title']}}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Is Internal</p>
+                        <mat-checkbox class="column" [formControl]="this.locationForm.get('isInternalLocation')"></mat-checkbox>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Is Scrap Location</p>
+                        <mat-checkbox class="column" [formControl]="this.locationForm.get('isScrapLocation')"></mat-checkbox>
+                    </form-element-container>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Is Return Location</p>
+                        <mat-checkbox class="column" [formControl]="this.locationForm.get('isReturnLocation')"></mat-checkbox>
+                    </form-element-container>
+                </div>
+                <mat-tab-group dynamicHeight>
+                    <mat-tab label="General Information">
+                    </mat-tab>
+                </mat-tab-group>
+                <form-element-container style="width: 100%; display: flex; flex-direction: row; justify-content: space-between;">
+                    <button #btnSubmit [disabled]="!this.locationForm.valid" type="submit" mat-flat-button color="primary" style="width: 100%;" (click)="onSubmit()">Submit</button>
+                    &nbsp;&nbsp;
+                    <button type="button" mat-flat-button color="warn" style="width: 100%;" (click)="onDiscard()">Discard</button>
+                </form-element-container>
+            </form>
+        </div>
+        <div actions *ngIf="showDetails === true">
+            <!-- <item-detail-action 
+                title="Bill Of Materials"
+                iconName="list"
+                quantity=1
+                (navigateTo)="navigate('/manufacturing/products/boms')"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Edit Product"
+                iconName="add"
+                (navigateTo)="navigate('/inventory/products/edit/1')"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Archive Product"
+                iconName="remove"
+                (navigateTo)="navigate('/inventory/products/edit/1')"
+            ></item-detail-action> -->
+        </div>
+    </item-card-details>
+</div>
+  

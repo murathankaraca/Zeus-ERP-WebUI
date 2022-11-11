@@ -1,0 +1,19 @@
+<div class="sub-page" style="padding: 0.75rem">
+  <div class="columns">
+    <div class="column">
+      <button mat-raised-button style="width: 100%;" (click)="addCategory()">Add Category</button>
+    </div>
+  </div>
+  <mat-progress-spinner *ngIf="!finishedLoading" mode="indeterminate"></mat-progress-spinner>
+  <div class="columns">
+    <list-card *ngFor="let category of categoryListDtos"
+        class="column is-4-desktop is-12-mobile is-6-tablet"
+        [title]="category.categoryName">
+      <app-text-details label="Parent Category" [data]="category.parentCategoryName"></app-text-details>
+      <div style="box-sizing: border-box; padding: 0.5rem; width: 100%; display: flex; justify-content: space-between;">
+        <button mat-raised-button color="primary" style="width:45%" (click)="editCategory(category.categoryId)"><mat-icon>edit</mat-icon>Edit</button>
+        <button mat-raised-button color="primary" style="width:45%;" (click)="showCategoryDetails(category.categoryId)"><mat-icon>edit</mat-icon>Details</button>
+      </div>
+    </list-card>
+  </div>
+</div>

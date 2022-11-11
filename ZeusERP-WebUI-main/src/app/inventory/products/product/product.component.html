@@ -1,0 +1,64 @@
+<div *ngIf="productDetails">
+    <item-card-details>
+        <div body>
+            <detail-card-header
+                [title]="productDetails.productName" 
+                [imgPath]="productDetails.imagePath"
+            >
+            </detail-card-header>
+            <div>
+                <form-element-container>
+                    <p class="mat-body-strong column">Can Be Purchased</p>
+                    <mat-checkbox class="column" [disabled]="true" [value]="this.productDetails.canBePurchased"></mat-checkbox>
+                </form-element-container>
+                <form-element-container>
+                    <p class="mat-body-strong column">Can Be Sold</p>
+                    <mat-checkbox class="column" [disabled]="true" [value]="this.productDetails.canBeSold"></mat-checkbox>
+                </form-element-container>
+            </div>
+            <mat-tab-group dynamicHeight>
+                <mat-tab label="General Information">
+                    <app-text-details label="Description" [data]="this.productDetails.productDescription"></app-text-details>
+                    <app-text-details label="Product Category" [data]=""></app-text-details>
+                    <form-element-container>
+                        <p class="mat-body-strong column">Product Category</p>
+                        <p class="mat-body column hyperlink" [textContent]="this.productDetails.categoryName" (click)="navigate(['/','inventory','categories', this.productDetails.categoryId])"></p>
+                    </form-element-container>
+                    <app-text-details label="Product Type" [data]="this.productDetails.productType"></app-text-details>
+                    <app-text-details label="Unit Price" [data]="this.productDetails.productPrice"></app-text-details>
+                    <app-text-details label="Unit Cost" [data]="this.productDetails.productCost"></app-text-details>
+                </mat-tab>
+                <mat-tab label="Inventory">
+                    <app-detail-secondary-header title='Logistics' padding="0.75rem"></app-detail-secondary-header>
+                    <app-text-details label="Responsible" [data]="this.productDetails.responsibleName"></app-text-details>
+                    <app-text-details label="Volume" [data]="this.productDetails.volume"></app-text-details>
+                    <app-text-details label="Weight" [data]="this.productDetails.weight"></app-text-details>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+        <div actions *ngIf="showDetails === true">
+            <item-detail-action 
+                title="Bill Of Materials"
+                iconName="list"
+                quantity=1
+                (navigateTo)="navigate('/manufacturing/products/boms')"
+            ></item-detail-action>
+            <item-detail-action 
+                title="On Hand Quantity"
+                [quantity]="productDetails.productQuantity"
+                iconName="edit"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Edit Product"
+                iconName="add"
+                (navigateTo)="navigate('/inventory/products/edit/' + productDetails.productId.toString())"
+            ></item-detail-action>
+            <item-detail-action 
+                title="Archive Product"
+                iconName="remove"
+                (navigateTo)="deleteProduct()"
+            ></item-detail-action>
+        </div>
+    </item-card-details>
+</div>
+  

@@ -1,0 +1,15 @@
+<div id="registerForm">
+    <mat-card>
+        <form [formGroup]="this.registerForm" (submit)="createAccount($event)">
+            <mat-icon style="font-size: 24pt;">person_add</mat-icon>
+            <h2>Create New Account</h2>
+            <mat-form-field>
+                <input type="text" matInput placeholder="Username" [formControl]="this.registerForm.get('username')" type="text" name="edtTxtUsername" />
+            </mat-form-field>
+            <mat-form-field>
+                <input type="password" matInput placeholder="Password" [formControl]="this.registerForm.get('password')" type="password" name="edtTxtPassword" />
+            </mat-form-field>
+            <button color="primary" mat-raised-button type="submit" name="btnSubmit">Create Account</button>
+        </form>
+    </mat-card>
+</div>

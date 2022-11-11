@@ -1,0 +1,38 @@
+<div id="page">
+    <mat-toolbar color="primary" class="columns is-gapless is-multiline" 
+        style="height: 9%;">
+        <div class="" style="margin-right: 1rem;">
+            <button  mat-mini-fab color="secondary" aria-label="Master Menu" (click)="this.navigate(['/'])">
+                <mat-icon>filter_list</mat-icon>
+            </button>
+        </div>
+        <h4 
+            class="column is-2">
+            Manufacturing
+        </h4>
+        <mat-form-field appearance="fill" class="column is-2 dropdown">
+            <mat-label>Orders</mat-label>
+            <mat-select>
+              <mat-option class="widen" (click)="this.navigate(['/', 'manufacturing', 'orders', 'manufacturing'])">Manufacture</mat-option>
+              <mat-option class="widen" (click)="this.navigate(['/', 'manufacturing', 'orders', 'unbuild'])">Unbuild</mat-option>
+              <mat-option class="widen" (click)="this.navigate(['/', 'inventory', 'orders', 'scrap'])">Scrap</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div style="padding-left: 1rem;"></div>
+        <mat-form-field appearance="fill" class="column is-3 dropdown">
+            <mat-label>Master Data</mat-label>
+            <mat-select>
+                <mat-option class="widen" (click)="this.navigate(['/', 'inventory', 'products'])">
+                    Products
+                </mat-option>
+                <mat-option class="widen" (click)="this.navigate(['/', 'manufacturing', 'boms'])">
+                    Bill of Materials
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+    <button class="user-section" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+        <mat-icon>person</mat-icon>
+    </button>
+</div>

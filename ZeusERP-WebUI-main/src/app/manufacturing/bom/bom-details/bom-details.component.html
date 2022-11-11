@@ -1,0 +1,48 @@
+<div style="width: 100%;">
+    <add-card>
+        <div body>
+              <form-element-container>
+                <p *ngIf="this.bomDetails" class="mat-body-strong" [innerText]="'#'+ this.bomDetails.bomReference"></p>
+              </form-element-container>
+                <div>
+                  <form-element-container>
+                      <p class="mat-body-strong column">Product Name</p>
+                      <p *ngIf="this.bomDetails"
+                        style="margin: 0; padding: 0;" 
+                        class="column hyperlink" 
+                        [innerText]="this.bomDetails.productName"
+                        (click)="navigateToProduct(this.bomDetails.productId)"></p>
+                  </form-element-container>
+                  <form-element-container>
+                      <p class="mat-body-strong column">Manufacture This Component</p>
+                      <mat-checkbox class="column" *ngIf="this.bomDetails" parse-int [value]="this.bomDetails.bomType"></mat-checkbox>
+                  </form-element-container>
+                  <form-element-container>
+                    <p class="mat-body-strong column">Quantity</p>
+                    <p *ngIf="this.bomDetails" matInput class="column" placeholder="ex. 5.000" [innerText]="this.bomDetails.quantity"></p>
+                </form-element-container>
+                </div>
+                <mat-tab-group *ngIf="this.bomId" dynamicHeight>
+                    <mat-tab label="Components">
+                      
+                        <table mat-table [dataSource]="this.compDataSource" matSort>
+                        <ng-container matColumnDef="productName">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Product</th>
+                          <td mat-cell *matCellDef="let row">
+                             <p class="hyperlink" (click)="navigateToProduct(row.productId)">{{row.productName}}</p>
+                          </td>
+                        </ng-container>
+
+                          <ng-container matColumnDef="quantity">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Quantity</th>
+                            <td mat-cell *matCellDef="let row">{{row.quantity}} </td>
+                        </ng-container>
+                        <tr mat-header-row *matHeaderRowDef="displayedComponentColumns"></tr>
+                        <tr mat-row *matRowDef="let row; columns: displayedComponentColumns;"></tr>
+                      </table>
+                    
+                    </mat-tab>
+                </mat-tab-group>
+      </div>
+    </add-card>
+  </div>

@@ -1,0 +1,16 @@
+<div class="page">
+    <form [formGroup]="this.ecoTypeForm" (submit)="this.onSubmit()">
+        <mat-card>
+            <div class="form-body">
+                <h2 style="text-align: center;">Create New Type</h2>
+                <mat-form-field>
+                    <input matInput placeholder="Name" [formControl]="this.ecoTypeForm.get('name')"/>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput type="email" placeholder="Email" [formControl]="this.ecoTypeForm.get('emailAlias')"/>
+                </mat-form-field>
+                <button #btnsubmit class="btn-submit" type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+        </mat-card>
+    </form>
+</div>

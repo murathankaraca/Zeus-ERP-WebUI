@@ -1,0 +1,10 @@
+<div *ngIf="this.imgPath; else titleOnly" class="card-detail-header columns is-mobile">
+    <div class="card-detail-header__img column is-4" 
+    [ngStyle]="getImgStyle()"></div>
+    <h1 class="column is-6">{{title}}</h1>
+</div>
+<ng-template #titleOnly>
+    <div class="card-detail-header columns is-mobile">
+        <h1 class="column is-12" style="justify-content: flex-start;">{{title}}</h1>
+    </div>
+</ng-template>

@@ -1,0 +1,27 @@
+#page {
+  height: 90%;
+  margin: 0;
+  padding: 0;
+}
+#cardView {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-template-rows: auto;
+  grid-column-gap: 0.5rem;
+  padding: 0.5rem;
+
+}
+.order-card {
+  border-radius: 0;
+  border-right: 8px solid lightgreen;
+  height: 5rem;
+}
+.btn-order-process {
+  text-transform: uppercase;
+
+  &__text {
+    padding: 0;
+    margin: 0;
+  }
+}
